@@ -105,16 +105,17 @@ function toCsv(rows, delimiter = ',') {
 
 function usage(exitCode = 0) {
   const msg = `
-json2csv - flatten JSON into CSV
+json2csv - flatten JSON into CSV (Pro)
 
 Usage:
-  json2csv <input.json>
-  cat input.json | json2csv
+  json2csv-pro <input.json> [--delimiter ';']
+  cat input.json | json2csv-pro [--delimiter ';']
 
 Notes:
   - Nested objects become dot keys: user.profile.name
   - Arrays of primitives become joined strings: tags -> "a|b|c"
   - Arrays of objects become indexed columns: items[0].id, items[1].id
+  --delimiter ';'   Use a custom CSV delimiter
 `;
   process.stderr.write(msg.trim() + '\n');
   process.exit(exitCode);
@@ -124,9 +125,25 @@ async function main() {
   const args = process.argv.slice(2);
   if (args.includes('-h') || args.includes('--help')) usage(0);
 
+  const delimiterFlagIndex = args.indexOf('--delimiter');
+  let delimiter = ',';
+  if (delimiterFlagIndex !== -1) {
+    delimiter = args[delimiterFlagIndex + 1];
+    if (!delimiter) {
+      process.stderr.write('Error: --delimiter requires a value\n');
+      process.exit(1);
+    }
+  }
+
+  // Remove the delimiter flag + value from positional args (so input file parsing is simple)
+  const cleanedArgs = [...args];
+  if (delimiterFlagIndex !== -1) {
+    cleanedArgs.splice(delimiterFlagIndex, 2);
+  }
+
   let raw;
-  if (args.length >= 1) {
-    const path = args[0];
+  if (cleanedArgs.length >= 1) {
+    const path = cleanedArgs[0];
     try {
       raw = fs.readFileSync(path, 'utf8');
     } catch (e) {
@@ -148,7 +165,7 @@ async function main() {
   }
 
   const rows = asRows(json);
-  const csv = toCsv(rows, ',');
+  const csv = toCsv(rows, delimiter);
   process.stdout.write(csv);
 }
 

@@ -1,4 +1,7 @@
-![GitHub release](https://img.shields.io/github/v/release/mini-tool-lab/json2csv)
+💼 **Pro version available**  
+Adds support for custom CSV delimiters and extended options.  
+👉 https://gumroad.com/l/YOUR-LINK
+
 # json2csv
 
 A predictable CLI to flatten JSON into CSV. Built for API responses, logs, and anything else that refuses to behave.
@@ -21,6 +24,8 @@ This tool is for you.
 ```bash
 npm install -g json2csv
 ```
+> Note: If you publish under a different npm package name (recommended for uniqueness),
+> update the install command accordingly.
 
 ## Usage
 
