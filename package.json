@@ -1,5 +1,5 @@
 {
-  "name": "json2csv",
+  "name": "@mini-tool-lab/json2csv",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -10,6 +10,6 @@
   "license": "ISC",
   "description": "",
   "bin": {
-    "json2csv": "./json2csv.js"
+    "json2csv": "json2csv.js"
   }
 }
