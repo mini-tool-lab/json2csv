@@ -1,3 +1,4 @@
+![GitHub release](https://img.shields.io/github/v/release/mini-tool-lab/json2csv)
 # json2csv
 
 A predictable CLI to flatten JSON into CSV. Built for API responses, logs, and anything else that refuses to behave.
