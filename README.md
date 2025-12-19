@@ -1,6 +1,6 @@
 💼 **Pro version available**  
 Adds support for custom CSV delimiters and extended options.  
-👉 https://gumroad.com/l/YOUR-LINK
+👉 https://minitoollab.gumroad.com/l/json2csvpro?_gl=1*1cio27s*_ga*MTE2NzE5NTc0MS4xNzY1ODMzOTgy*_ga_6LJN6D94N6*czE3NjYxNzMyNTgkbzQkZzAkdDE3NjYxNzMyNTgkajYwJGwwJGgw
 
 # json2csv
 
